@@ -58,7 +58,7 @@ The script employs several sophisticated mathematical concepts:
 ## Usage
 
 ```powershell
-.\MysticalFileSelector.ps1
+.\Random.ps1
 ```
 
 The script executes in the following sequence:
