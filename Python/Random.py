@@ -6,6 +6,7 @@ import logging
 import platform
 import subprocess
 import time
+from datetime import datetime, UTC
 
 # Configure logging
 log_directory = os.path.join(os.getenv('APPDATA') or '.', 'RandomFileSelector')
@@ -105,8 +106,9 @@ def select_random_file(files, triangle_randomness):
     random_index = get_random_org_numbers(1, 0, len(files) - 1)[0]
     
     # Apply mystical influences
-    tidal_influence = round(datetime.datetime.utcnow().timetuple().tm_yday / 365.25 * (len(files) - 1))
-    em_influence = round(datetime.datetime.utcnow().hour / 24 * (len(files) - 1))
+    now = datetime.now(UTC)
+    tidal_influence = round(now.timetuple().tm_yday / 365.25 * (len(files) - 1))
+    em_influence = round(now.hour / 24 * (len(files) - 1))
     
     combined_index = (random_index + tidal_influence + em_influence + triangle_randomness) % len(files)
     
